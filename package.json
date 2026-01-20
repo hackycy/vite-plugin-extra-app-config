@@ -2,7 +2,7 @@
   "name": "vite-plugin-extra-app-config",
   "type": "module",
   "version": "0.0.0",
-  "packageManager": "pnpm@10.26.2",
+  "packageManager": "pnpm@10.28.1",
   "author": "hackycy <hackycy@outlook.com>",
   "license": "MIT",
   "homepage": "https://github.com/hackycy-collection/vite-plugin-extra-app-config#readme",
@@ -11,7 +11,10 @@
     "url": "git+https://github.com/hackycy-collection/vite-plugin-extra-app-config.git"
   },
   "bugs": "https://github.com/hackycy-collection/vite-plugin-extra-app-config/issues",
-  "keywords": [],
+  "keywords": [
+    "vite",
+    "vite-plugin"
+  ],
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
@@ -33,6 +36,9 @@
     "test": "vitest",
     "typecheck": "tsc",
     "prepare": "simple-git-hooks"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:cli",
