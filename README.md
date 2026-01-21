@@ -25,7 +25,7 @@ export default defineConfig({
 })
 ```
 
-** helper function **
+**helper function**
 
 ``` ts
 import { getEnvConfig } from 'vite-plugin-extra-app-config/helper'
