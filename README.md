@@ -7,7 +7,13 @@
 
 用于将配置文件抽离出来并注入到项目中的Vite Plugin
 
-## Use
+## 安装
+
+``` bash
+pnpm add -D vite-plugin-extra-app-config
+```
+
+## 使用
 
 ``` ts
 import { defineConfig } from 'vite'
@@ -25,7 +31,7 @@ export default defineConfig({
 })
 ```
 
-**helper function**
+**辅助函数获取**
 
 ``` ts
 import { getEnvConfig } from 'vite-plugin-extra-app-config/helper'
