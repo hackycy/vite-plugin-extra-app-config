@@ -36,22 +36,24 @@ export interface PluginOptions {
    * The prefix used to match environment variables for inclusion in the app config.
    * @default 'VITE_GLOB_'
    */
-  envVarPrefix?: string
+  envPrefixMatch?: string
 }
 
-export async function ViteExtraAppConfigPlugin(options: PluginOptions): Promise<PluginOption | undefined> {
+const DEFAULT_OPTIONS: Partial<PluginOptions> = {
+  configFile: GLOBAL_CONFIG_FILE_NAME,
+  globalVarName: GLOBAL_VAR_NAME,
+  envPrefixMatch: DEFAULT_ENV_VAR_PREFIX,
+  envDir: process.cwd(),
+}
+
+export function ViteExtraAppConfigPlugin(options: PluginOptions): PluginOption | undefined {
   const {
     isBuild,
     configFile,
     globalVarName,
-    envVarPrefix,
+    envPrefixMatch,
     envDir,
-  } = Object.assign({
-    configFile: GLOBAL_CONFIG_FILE_NAME,
-    globalVarName: GLOBAL_VAR_NAME,
-    envVarPrefix: DEFAULT_ENV_VAR_PREFIX,
-    envDir: process.cwd(),
-  }, options) as PluginOptions
+  } = Object.assign({}, DEFAULT_OPTIONS, options) as PluginOptions
 
   let publicPath: string
   let source: string
@@ -65,7 +67,7 @@ export async function ViteExtraAppConfigPlugin(options: PluginOptions): Promise<
     name: 'vite:extra-app-config',
     async configResolved(config) {
       publicPath = ensureTrailingSlash(config.base)
-      source = getConfigSource(globalVarName!, envVarPrefix!, envDir!, config.envPrefix)
+      source = getConfigSource(globalVarName!, envPrefixMatch!, envDir!, config.envPrefix)
     },
     async generateBundle() {
       try {
@@ -75,10 +77,10 @@ export async function ViteExtraAppConfigPlugin(options: PluginOptions): Promise<
           fileName: configFile,
         })
 
-        console.log(`✨configuration file is build successfully!`)
+        console.log(`\n✨configuration file is build successfully!`)
       }
       catch (error) {
-        console.log(`configuration file configuration file failed to package:\n${error}`)
+        console.log(`\nconfiguration file configuration file failed to package:\n${error}`)
       }
     },
     async transformIndexHtml(html) {
@@ -93,3 +95,5 @@ export async function ViteExtraAppConfigPlugin(options: PluginOptions): Promise<
     },
   }
 }
+
+export default ViteExtraAppConfigPlugin
