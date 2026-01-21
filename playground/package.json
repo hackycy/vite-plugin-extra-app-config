@@ -2,9 +2,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "dev": "vite"
   },
   "devDependencies": {
+    "vite-plugin-extra-app-config": "workspace:^",
     "vite-plugin-inspect": "^11.1.0"
   }
 }

@@ -8,6 +8,24 @@
 
 用于将配置文件抽离出来并注入到项目中的Vite Plugin
 
+## Use
+
+``` ts
+import { defineConfig } from 'vite'
+import ExtraAppConfigPlugin from 'vite-plugin-extra-app-config'
+
+export default defineConfig({
+  plugins: [
+    ExtraAppConfigPlugin({
+      isBuild: true,
+      globalVarName: '__APP_ENV__',
+      envPrefixMatch: 'VITE_GLOB',
+      configFile: '_app.config.js',
+    }),
+  ],
+})
+```
+
 ## License
 
 [MIT](./LICENSE) License © [hackycy](https://github.com/hackycy)
