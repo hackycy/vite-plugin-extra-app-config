@@ -26,6 +26,14 @@ export default defineConfig({
 })
 ```
 
+** helper function **
+
+``` ts
+import { getEnvConfig } from 'vite-plugin-extra-app-config/helper'
+
+console.log('Env Config:', getEnvConfig('__APP_ENV__'))
+```
+
 ## License
 
 [MIT](./LICENSE) License © [hackycy](https://github.com/hackycy)
