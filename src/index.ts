@@ -13,6 +13,13 @@ export interface PluginOptions {
   isBuild: boolean
 
   /**
+   * The base public path when served in production.\
+   *
+   * @default config.base
+   */
+  base?: string
+
+  /**
    * The root directory of the project.
    * @default process.cwd()
    */
@@ -53,6 +60,7 @@ export function ViteExtraAppConfigPlugin(options: PluginOptions): PluginOption |
     globalVarName,
     envPrefixMatch,
     envDir,
+    base,
   } = Object.assign({}, DEFAULT_OPTIONS, options) as PluginOptions
 
   let publicPath: string
@@ -66,7 +74,7 @@ export function ViteExtraAppConfigPlugin(options: PluginOptions): PluginOption |
   return {
     name: 'vite:extra-app-config',
     async configResolved(config) {
-      publicPath = ensureTrailingSlash(config.base)
+      publicPath = ensureTrailingSlash(base ?? config.base)
       source = getConfigSource(globalVarName!, envPrefixMatch!, envDir!, config.envPrefix)
     },
     async generateBundle() {
