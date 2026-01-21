@@ -12,6 +12,7 @@ export default defineConfig({
       globalVarName: '__APP_ENV__',
       envPrefixMatch: 'VITE_GLOB',
       configFile: '_app.config.js',
+      base: '/',
     }),
   ],
 })

@@ -41,9 +41,19 @@ export interface PluginOptions {
 
   /**
    * The prefix used to match environment variables for inclusion in the app config.
+   *
    * @default 'VITE_GLOB_'
    */
   envPrefixMatch?: string
+
+  /**
+   * The query string appended to the config file to bust cache.
+   * supports [hash] placeholder.
+   * like <script src="/_app.config.js?v=[hash]"></script>
+   *
+   * @default '[hash]'
+   */
+  assetRev?: string | false
 }
 
 const DEFAULT_OPTIONS: Partial<PluginOptions> = {
@@ -51,6 +61,7 @@ const DEFAULT_OPTIONS: Partial<PluginOptions> = {
   globalVarName: GLOBAL_VAR_NAME,
   envPrefixMatch: DEFAULT_ENV_VAR_PREFIX,
   envDir: process.cwd(),
+  assetRev: '[hash]',
 }
 
 export function ViteExtraAppConfigPlugin(options: PluginOptions): PluginOption | undefined {
@@ -61,6 +72,7 @@ export function ViteExtraAppConfigPlugin(options: PluginOptions): PluginOption |
     envPrefixMatch,
     envDir,
     base,
+    assetRev,
   } = Object.assign({}, DEFAULT_OPTIONS, options) as PluginOptions
 
   let publicPath: string
@@ -92,9 +104,13 @@ export function ViteExtraAppConfigPlugin(options: PluginOptions): PluginOption |
       }
     },
     async transformIndexHtml(html) {
-      const hash = `v=${generatorContentHash(html, 8)}`
+      let v = ''
+      if (typeof assetRev === 'string') {
+        const hash = generatorContentHash(source, 8)
+        v = assetRev.replace(/\[hash\]/g, `?v=${hash}`)
+      }
 
-      const appConfigSrc = `${publicPath}${configFile}?${hash}`
+      const appConfigSrc = `${publicPath}${configFile}${v}`
 
       return {
         html,
