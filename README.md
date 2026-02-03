@@ -34,9 +34,9 @@ export default defineConfig({
 **辅助函数获取**
 
 ``` ts
-import { getEnvConfig } from 'vite-plugin-extra-app-config/helper'
+import { useAppConfig } from 'vite-plugin-extra-app-config/helper'
 
-console.log('Env Config:', getEnvConfig('__APP_ENV__'))
+console.log('App Config:', useAppConfig(import.meta.env, import.meta.env.PROD, '__APP_ENV__'))
 ```
 
 ## License
