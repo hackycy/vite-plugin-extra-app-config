@@ -5,12 +5,12 @@
   "packageManager": "pnpm@10.28.1",
   "author": "hackycy <hackycy@outlook.com>",
   "license": "MIT",
-  "homepage": "https://github.com/hackycy-collection/vite-plugin-extra-app-config#readme",
+  "homepage": "https://github.com/hackycy/vite-plugin-extra-app-config#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hackycy-collection/vite-plugin-extra-app-config.git"
+    "url": "git+https://github.com/hackycy/vite-plugin-extra-app-config.git"
   },
-  "bugs": "https://github.com/hackycy-collection/vite-plugin-extra-app-config/issues",
+  "bugs": "https://github.com/hackycy/vite-plugin-extra-app-config/issues",
   "keywords": [
     "vite",
     "vite-plugin"

@@ -57,5 +57,5 @@ This project also partially contains code derived or copied from the following p
 [npm-downloads-href]: https://npmjs.com/package/vite-plugin-extra-app-config
 [bundle-src]: https://img.shields.io/bundlephobia/minzip/vite-plugin-extra-app-config?style=flat&colorA=080f12&colorB=1fa669&label=minzip
 [bundle-href]: https://bundlephobia.com/result?p=vite-plugin-extra-app-config
-[license-src]: https://img.shields.io/github/license/hackycy-collection/vite-plugin-extra-app-config.svg?style=flat&colorA=080f12&colorB=1fa669
-[license-href]: https://github.com/hackycy-collection/vite-plugin-extra-app-config/blob/main/LICENSE
+[license-src]: https://img.shields.io/github/license/hackycy/vite-plugin-extra-app-config.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/hackycy/vite-plugin-extra-app-config/blob/main/LICENSE
